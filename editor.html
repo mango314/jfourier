@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Math Blog Editor</title>
-<link rel="shortcut icon" href="https://dl.dropboxusercontent.com/u/17949100/math/tiles.png" type="image/png">
-<script type='text/javascript' src='http://code.jquery.com/jquery-git2.js'></script>
-<script type='text/javascript' src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
-<script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Math Blog Editor</title>
+        <link rel="shortcut icon" href="https://dl.dropboxusercontent.com/u/17949100/math/tiles.png" type="image/png">
+        <script type='text/javascript' src='http://code.jquery.com/jquery-git2.js'></script>
+        <script type='text/javascript' src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+        <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
 
-<style type='text/css'>
-	body { font-family: Helvetica; }
-	#MathInput {width:750px; height:200px; padding:5px;}
-	#MathOutput {  width:750px;  background-color:#CEEDD8; padding:5px; height: 400px;
-    overflow: auto;}
-	code, pre { background-color:#38DF64; padding:2px; }
-	blockquote { border-left-style:double; border-left-color:#777777; padding:3px; background-color:#FFCC99;}  
-</style>
+    <style type='text/css'>
+    	body { font-family: Helvetica;
+            background:#F0F7F2;
+        }
 
-<script type='text/javascript'>//<![CDATA[ 
+    	#MathInput {
+            float:left;
+            width:50%;
+        }
+        #MathInput textarea {
+            width:99%;
+            height: 400px;
+        }
+    	#MathOutput {
+            background-color:#F0F7F2;
+            float: right;
+            height: 400px;
+            overflow: auto;
+            width:50%;
+        }
+    	code, pre { background-color:#38DF64; padding:2px; }
+    	blockquote { border-left-style:double; border-left-color:#777777; padding:3px; background-color:#FFCC99;}
+    </style>
 
-	$(window).load(function(){
-  /*$.ajax({
-    url: 'roth.md', dataType: 'text',
-    success: function(content){
-        $('#MathInput').val(content);
-		document.getElementById("MathOutput").innerHTML = converter.makeHtml($('#MathInput').val());
-		MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathOutput"]); 
-    }
-  });*/
+    <script type='text/javascript'>//<![CDATA[
 
+    	$(window).load(function(){
 
+    	var converter = new Showdown.converter();
 
-	var converter = new Showdown.converter();
+    	window.UpdateMath = function (TeX) {
+    	//set the MathOutput HTML
+    	document.getElementById("MathOutput").innerHTML = converter.makeHtml(TeX);
+    	//reprocess the MathOutput Element
+    	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathOutput"]);
+    	};
+    	});//]]>
+    </script>
+    </head>
 
-	window.UpdateMath = function (TeX) {
-	//set the MathOutput HTML
-	document.getElementById("MathOutput").innerHTML = converter.makeHtml(TeX);
-	//reprocess the MathOutput Element
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathOutput"]); 
-	};
-	});//]]>  
-
-</script>
-</head>
-
-<body>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
-	</script>
-<div id="MathOutput"></div>
-	<textarea  id="MathInput" size="50" onkeyup="UpdateMath(this.value)" placeholder="Let's have a math discussion!"></textarea>
-
-	
-
-</body>
+    <body>
+        <div id="MathInput">
+            <textarea size="50" onkeyup="UpdateMath(this.value)"
+                      placeholder="Let's have a math discussion!"></textarea>
+        </div>
+        <div id="MathOutput"></div>
+    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    </script>
 </html>
