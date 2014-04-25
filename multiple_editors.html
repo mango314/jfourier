@@ -45,18 +45,18 @@
     	blockquote { border-left-style:double; border-left-color:#777777; padding:3px; background-color:#FFCC99;}
     </style>
 
-    <script type='text/javascript'>//<![CDATA[
+    <script type='text/javascript'>
 
     	$(window).load(function(){
 
-    	var converter = new Showdown.converter();
+        	var converter = new Showdown.converter();
 
-    	window.UpdateMath = function (TeX) {
-    	//set the MathOutput HTML
-    	document.getElementById("MathOutput").innerHTML = converter.makeHtml(TeX);
-    	//reprocess the MathOutput Element
-    	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathOutput"]);
-    	};
+        	window.UpdateMath = function (TeX) {
+        	//set the MathOutput HTML
+        	document.getElementById("MathOutput").innerHTML = converter.makeHtml(TeX);
+        	//reprocess the MathOutput Element
+        	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathOutput"]);
+        	};
     	});//]]>
     </script>
     </head>
@@ -81,7 +81,8 @@ $ \frac{2}{3}$
             </div>
             <h3><a href="#">Toolbar + Editor</a></h3>
             <div>
-                <div class="myeditor" id="editor3" style="height: 250px; width: 500px">some text 2
+                <div class="myeditor" id="editor3" style="height: 250px; width: 500px">
+some text 2
 `code snippet` and some *emphasis*
                 </div>
             </div>
@@ -119,11 +120,8 @@ $ \frac{2}{3}$
                 $(editor1).resize();
                 $(editor2).resize();
                 $(editor3).resize();
-
             }
             });
-        // editor.getSession().setUseWorker(false);
-
 
         //work
         editor1.getSession().on('change', function(e) {

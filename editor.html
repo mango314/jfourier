@@ -9,9 +9,21 @@
         <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
         <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
 
+    <script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css" type="text/css" media="all">
+	<script src="http://ace.ajax.org/build/src/ace.js" type="text/javascript" charset="utf-8"></script>
+
+
     <style type='text/css'>
-    	body { font-family: Helvetica;
+    	body {
+            font-family: Helvetica;
             background:#F0F7F2;
+        }
+
+        .ace_editor {
+            width:600px;
+            height:300px;
         }
 
     	#MathInput {
@@ -50,16 +62,76 @@
     </head>
 
     <body>
-        <div id="MathInput">
-            <textarea size="50" onkeyup="UpdateMath(this.value)"
+        <div id="accordion">
+            <h3><a href="#">Ace Editor</a></h3>
+            <div>
+<div class="myeditor" id="editor1">
+# Let's have a math discussion!
+---
+## Latex enabled Editor
+
+$ \frac{2}{3}$
+</div>
+            </div>
+            <h3><a href="#">Plain Editor</a></h3>
+            <div>
+                <div class="myeditor" id="editor2" style="height: 250px; width: 500px">some text 2
+# title
+                </div>
+            </div>
+            <h3><a href="#">Toolbar + Editor</a></h3>
+            <div>
+                <div class="myeditor" id="editor3" style="height: 250px; width: 500px">some text 2
+`code snippet` and some *emphasis*
+                </div>
+            </div>
+            <h3><a href="#">TextArea</a></h3>
+            <div>
+            <div id="MathInput">
+                <textarea size="50" onkeyup="UpdateMath(this.value)"
                       placeholder="Let's have a math discussion!"></textarea>
+            </div>
+            <div id="MathOutput"></div>
+            </div>
         </div>
-        <div id="MathOutput"></div>
+
+
     </body>
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [['$','$'], ['\\(','\\)']]}
     });
+    </script>
+    <script>
+    $(function() {
+        var editor1 = ace.edit("editor1");
+        editor1.getSession().setMode("ace/mode/latex");
+
+        var editor2 = ace.edit("editor2");
+        editor2.getSession().setMode("ace/mode/java");
+        var editor3 = ace.edit("editor3");
+        editor3.getSession().setMode("ace/mode/java");
+
+        $( "#accordion" ).accordion({
+            fillSpace: true,
+            change: function() {
+                $(editor1).resize();
+                $(editor2).resize();
+                $(editor3).resize();
+
+
+            }
+            });
+        // editor.getSession().setUseWorker(false);
+
+
+        //work
+        editor1.getSession().on('change', function(e) {
+             $('.ace_identifier').css("background-color","black");
+        });
+
+    });
+
     </script>
 </html>
