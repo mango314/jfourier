@@ -63,6 +63,15 @@
 
     <body>
         <div id="accordion">
+            <h3><a href="#">TextArea</a></h3>
+            <div>
+            <div id="MathInput">
+                <textarea size="50" onkeyup="UpdateMath(this.value)"
+                      placeholder="Let's have a math discussion!"></textarea>
+            </div>
+            <div id="MathOutput"></div>
+            </div>
+
             <h3><a href="#">Ace Editor</a></h3>
             <div>
 <div class="myeditor" id="editor1">
@@ -85,14 +94,7 @@ $ \frac{2}{3}$
 `code snippet` and some *emphasis*
                 </div>
             </div>
-            <h3><a href="#">TextArea</a></h3>
-            <div>
-            <div id="MathInput">
-                <textarea size="50" onkeyup="UpdateMath(this.value)"
-                      placeholder="Let's have a math discussion!"></textarea>
-            </div>
-            <div id="MathOutput"></div>
-            </div>
+
         </div>
 
 
