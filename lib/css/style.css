@@ -1,0 +1,68 @@
+html, body{
+  height:100%;
+  margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'New York', 'MS Serif', Georgia, serif;                
+}
+#MathInput {
+    height:100%;
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;     
+    box-sizing: border-box;
+    width: calc(50% - 20px);
+    width: -moz-calc(50% - 20px);
+    width: -webkit-calc(50% - 20px);
+    width: -o-calc(50% - 20px);
+    position: fixed;
+    outline: 1px solid #D3D7DC;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #EAEDF1;
+}
+
+h1, h2, h3, h4, h5{
+    font-weight: normal;
+}
+
+hr {
+    border: 1px solid #D3D7DC;
+    border-bottom:0;
+}
+
+#MathInput .header h1{
+    font-family: 'avenir', helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #767b8d;
+    text-align: center;
+}
+#MathInput .header h1 small{
+    font-size: 14px;
+    color: #767b8d;
+}
+
+#MathOutput{
+    border-radius: 0px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    padding: 10px 20px;
+    margin-left: 0px;
+    width: calc(50%);
+    width: -moz-calc(50%);
+    width: -webkit-calc(50%);
+    width: -o-calc(50%);
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;     
+    box-sizing: border-box; 
+    background-color: #fff;
+}
+
+.CodeMirror {
+    border-radius: 4px;
+    height:auto;
+}
